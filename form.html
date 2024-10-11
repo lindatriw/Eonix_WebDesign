@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sympathius</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="formstyle.css">
+</head>
+<body>
+    <form action="submit_form.php" method="POST">
+        <div class="form-group">
+            <label for="nama">Full Name:</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telepon">Phone Number:</label>
+            <input type="text" id="telepon" name="telepon">
+            
+            <label for="alasan">Reason for Joining:</label>
+            <textarea id="alasan" name="alasan" required></textarea>
+
+            <input type="checkbox" id="persetujuan" name="persetujuan" required>
+            <label for="persetujuan">By checking this box, I agree to join and am willing to follow all the terms and conditions</label>
+
+            <button type="submit">Join Now</button>
+        </div>
+    </form>
+</body>

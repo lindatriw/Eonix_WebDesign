@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Page - Sympathius</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #353535;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #48CAE4;
+        }
+
+        .donation-types {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .donation-type {
+            flex: 1 1 30%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .donation-type button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #48CAE4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .donation-type button:hover {
+            background-color: #36A0B1;
+        }
+
+        form {
+            display: none;
+            max-width: 500px;
+            margin: 20px auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form.active {
+            display: block;
+        }
+
+        input[type="text"], input[type="number"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #48CAE4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #36A0B1;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-message h2 {
+            color: #48CAE4;
+        }
+
+        .success-message p {
+            font-size: 18px;
+        }
+
+        .success-message a {
+            text-decoration: none;
+            color: #48CAE4;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Choose a Donation Type</h2>
+        <div class="donation-types">
+            <div class="donation-type">
+                <h4>Public Health</h4>
+                <p>Support community health programs with your donation for medical treatment and care for those in need.</p>
+                <button onclick="selectDonation('Public Health')">Donate Now</button>
+            </div>
+            <div class="donation-type">
+                <h4>Education Support</h4>
+                <p>Help children get the education they deserve by donating for books, school supplies, and tuition fees.</p>
+                <button onclick="selectDonation('Education Support')">Donate Now</button>
+            </div>
+            <div class="donation-type">
+                <h4>Disaster Relief</h4>
+                <p>Provide support to those affected by natural disasters with donations for food, shelter, and emergency aid.</p>
+                <button onclick="selectDonation('Disaster Relief')">Donate Now</button>
+            </div>
+        </div>
+
+        <form id="donation-form">
+            <h2 id="donation-type-header"></h2>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label for="amount">Donation Amount:</label>
+            <input type="number" id="amount" name="amount" placeholder="Enter donation amount" required>
+
+            <input type="submit" value="Submit Donation">
+        </form>
+
+        <div class="success-message" id="success-message">
+            <h2>Donation Successful!</h2>
+            <p>Thank you for your generous donation. Your contribution will make a significant impact.</p>
+            <p><a href="#" onclick="resetPage()">Go back to the donation page</a></p>
+        </div>
+    </div>
+
+    <script>
+        function selectDonation(type) {
+            document.getElementById('donation-type-header').textContent = 'Donation for ' + type;
+            document.getElementById('donation-form').classList.add('active');
+        }
+
+        document.getElementById('donation-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Hide the form and show the success message
+            document.getElementById('donation-form').classList.remove('active');
+            document.getElementById('success-message').classList.add('active');
+        });
+
+        function resetPage() {
+            document.getElementById('success-message').classList.remove('active');
+            document.getElementById('donation-form').reset();
+            document.getElementById('donation-type-header').textContent = '';
+        }
+    </script>
+
+</body>
+</html>
